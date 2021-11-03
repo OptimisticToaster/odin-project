@@ -1,0 +1,19 @@
+p {
+    background-color: pink;
+    font-family: 'Verdana', sans-serif;
+}
+
+#div2 {
+    color: blue;
+    font-size: 36px;
+}
+
+#p3 {
+    font-size: 24px;
+}
+
+#div4 {
+    background-color: #42f569;
+    font-size: 24px;
+    font-weight: 700;
+}
