@@ -67,6 +67,21 @@ button.cancel {
 
 /* --- */
 
-.container {
+.modal {
   display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 16px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.header {
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
