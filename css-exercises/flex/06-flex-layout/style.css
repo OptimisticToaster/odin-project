@@ -31,11 +31,13 @@ input {
 body {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 ul {
   display: flex;
   list-style: none;
+  padding: 0px;
 }
 
 button {
