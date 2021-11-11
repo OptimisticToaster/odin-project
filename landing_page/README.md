@@ -1,5 +1,7 @@
 # Landing Page
 
+Flex Box Reference: https://cssreference.io/flexbox/
+
 https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/landing-page
 
 https://www.pexels.com/

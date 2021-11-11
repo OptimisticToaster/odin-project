@@ -1,36 +1,27 @@
-body {
-    display: flex;
-    flex-direction: column;
-}
-
 .logo {
-    height: 100px;
-    width: auto;
-}
-
-.page-image {
-    height: 300px;
+    height: 150px;
     width: auto;
 }
 
 #navbar {
+    display: flex;
+    flex-direction: row;
     background-color: #1F2937;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
-}
-
-#navbar ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 20px;
     align-items: center;
 }
 
-a.nav {
+#nav-right ul {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style: none;
+}
+
+a.nav-link {
     text-decoration: none;
     color: #E5E7EB;
+    font-size: 18px;
 }
 
 #section1 {
@@ -40,32 +31,19 @@ a.nav {
 }
 
 #section1-left h1 {
-    color: #F9FAF8;
     font-size: 48px;
     font-weight: 900;
+    color: #F9FAF8;
 }
 
 #section1-left p {
-    color: #E5E7EB;
     font-size: 18px;
+    color: #E5E7EB;
 }
 
-footer {
-    background-color: #1F2937;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-button {
-    background-color: #3882F6;
-    color: white;
-    border-radius: 4px;
-}
-
-.item img {
-    width: 100px;
-    height: auto;
+.main-photo {
+    height: 300px;
+    width: auto;
 }
 
 #section2 {
@@ -74,44 +52,35 @@ button {
     align-items: center;
 }
 
-#section2 h1 {
-    color: #1F2937;
-    font-size: 36px;
-    font-weight: 900;
-}
-
-#section2-images {
+#photo-boxes {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+}
+
+.box-image {
+    height: 100px;
+    width: auto;
+    border-radius: 10px;
 }
 
 #section3 {
+    display: flex;
+    flex-direction: column;
     background-color: #E5E7EB;
 }
 
-.testimonial {
-    font-style: italic;
+.quote {
     font-size: 36px;
+    font-style: italic;
     color: #1F2937;
 }
 
-.testimonial-source {
-    font-weight: 700;
-    font-size: smaller;
+.quote-source {
+    
 }
 
-#section2-images {
-    display: flex;
-    flex-direction: row;
-}
-
-#section4 {
-    display: flex;
-    flex-direction: row;
-}
-
-#navbar, #section1, #section2, #section3, #section4, footer {
-    padding-left: 120px;
-    padding-right: 120px;
+footer {
+    background-color: #1F2937;
+    color: E5E7EB;
+    font-size: 18px;
 }
