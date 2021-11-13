@@ -1,6 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .logo {
     height: 150px;
     width: auto;
+}
+
+button {
+    background-color: #3882F6;
+    border-color: #3882F6;
+    color: white;
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#section4-right button {
+    border-color: white;
 }
 
 #navbar {
@@ -9,6 +28,8 @@
     background-color: #1F2937;
     justify-content: space-between;
     align-items: center;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 #nav-right ul {
@@ -16,6 +37,7 @@
     flex-direction: row;
     gap: 20px;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 a.nav-link {
@@ -28,17 +50,22 @@ a.nav-link {
     background-color: #1F2937;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    padding: 50px 200px 50px 200px;
 }
 
 #section1-left h1 {
     font-size: 48px;
     font-weight: 900;
     color: #F9FAF8;
+    margin-bottom: 0px;
 }
 
 #section1-left p {
     font-size: 18px;
     color: #E5E7EB;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .main-photo {
@@ -55,6 +82,15 @@ a.nav-link {
 #photo-boxes {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.box {
+    width: 140px;
+    text-align: center;
 }
 
 .box-image {
@@ -67,20 +103,48 @@ a.nav-link {
     display: flex;
     flex-direction: column;
     background-color: #E5E7EB;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .quote {
     font-size: 36px;
     font-style: italic;
     color: #1F2937;
+    padding-left: 250px;
+    padding-right: 250px;
 }
 
 .quote-source {
-    
+    font-weight: 900;
+    margin-right: 350px;
+    margin-left: auto;
+}
+
+#section4 {
+    background-color: #3882F6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px 200px 100px 200px;
+}
+
+#section4-left h1 {
+    color: #F9FAF8;
+    margin-bottom: 0px;
+}
+
+#section4-left p {
+    color: #E5E7EB;
+    margin-top: 0px;
 }
 
 footer {
     background-color: #1F2937;
-    color: E5E7EB;
+    color: #E5E7EB;
     font-size: 18px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
