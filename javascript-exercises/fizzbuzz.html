@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        // Ask user for number
+        let chosen = parseInt(prompt("What number should we FizzBuzz?"));
+
+        // Run fizzbuzz for that number
+        fizzbuzz(chosen);
+
+        function fizzbuzz(mynum) {
+            for (let ctr = 1; ctr <= mynum; ctr++) {
+                console.log(`Current Counter: %s`, ctr);
+                if (ctr % 15 == 0 ) {
+                    console.log('FizzBuzz');
+                }
+                else if (ctr % 3 == 0 ) {
+                    console.log('Fizz');
+                }
+                else if (ctr % 5 == 0 ) {
+                    console.log('Buzz');
+                }
+                else {
+                    console.log(ctr);
+                }
+            }
+        }
+    </script>
+
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <h1>Hey-o!</h1>
+</body>
+</html>
