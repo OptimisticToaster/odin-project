@@ -1,33 +1,19 @@
+const getAge = function(birth, death) {
+    if (!death) {
+        death = new Date().getFullYear();
+    }
+    return death - birth;
+};
+
 const findTheOldest = function(people) {
 
-    // working this way first, then try reduce
-
-
-    // current year
-    let current = new Date().getFullYear();
-
-    // oldest person found so far
-    let oldest = new Object();
-    let age = 0;
-
-    // loop through
-    for( i = 0; i < people.length; i++) {
-        // get person age
-        let thisage = 0;
-        if(people[i]['yearOfDeath'] > 0) {
-            thisage = people[i]['yearOfDeath'] - people[i]['yearOfBirth'];
-        }
-        else {
-            thisage = current - people[i]['yearOfBirth'];
-        }
-        
-        if ( thisage > age) {
-            age = thisage;
-            oldest = people[i];
-        }
-
-    }
-    return oldest;
+    // Copied from https://github.com/iVuDang/The-Odin-Project-JavaScript-Exercises/blob/main/findTheOldest/findTheOldest.js
+    // for my own practice and review
+    return people.reduce((oldest, current) => {
+        const oldestAge = getAge(oldest.yearOfBirth, oldest.yearOfDeath);
+        const currentAge = getAge(current.yearOfBirth, current.yearOfDeath);
+        return oldestAge < currentAge ? current : oldest;
+    });
 
 };
 

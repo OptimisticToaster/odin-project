@@ -1,7 +1,7 @@
-const findTheOldest = require('./findTheOldest')
+let findTheOldest = require('./findTheOldest')
 
-describe('findTheOldest', () => {
-  test('finds the oldest person!', () => {
+describe('findTheOldest', function() {
+  it('finds the oldest person!', function() {
     const people = [
       {
         name: "Carly",
@@ -19,9 +19,9 @@ describe('findTheOldest', () => {
         yearOfDeath: 1941,
       },
     ]
-    expect(findTheOldest(people).name).toBe('Ray');
+    expect(findTheOldest(people).name).toEqual('Ray');
   });
-  test('finds the oldest person if someone is still living', () => {
+  it('finds the oldest person if someone is still living', function() {
     const people = [
       {
         name: "Carly",
@@ -38,9 +38,9 @@ describe('findTheOldest', () => {
         yearOfDeath: 1941,
       },
     ]
-    expect(findTheOldest(people).name).toBe('Ray');
+    expect(findTheOldest(people).name).toEqual('Ray');
   });
-  test('finds the oldest person if the OLDEST is still living', () => {
+  it('finds the oldest person if the OLDEST is still living', function() {
     const people = [
       {
         name: "Carly",
@@ -57,6 +57,6 @@ describe('findTheOldest', () => {
         yearOfDeath: 1941,
       },
     ]
-    expect(findTheOldest(people).name).toBe('Carly');
+    expect(findTheOldest(people).name).toEqual('Carly');
   });
 });
