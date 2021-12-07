@@ -7,8 +7,6 @@ const caesar = function(code, offset) {
   while (offset > 25) {
     offset -= 26;
   }
-  debugger;
-  // console.log(offset);
 
   // Create array of alphabet in unicode
   let reference = {};
