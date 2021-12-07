@@ -1,6 +1,15 @@
 const caesar = function(code, offset) {
   // Adjust the offset for negative or excessively large values
 
+  while (offset < 0) {
+    offset += 26;
+  }
+  while (offset > 25) {
+    offset -= 26;
+  }
+  debugger;
+  // console.log(offset);
+
   // Create array of alphabet in unicode
   let reference = {};
 
@@ -13,8 +22,6 @@ const caesar = function(code, offset) {
     // set val_int - the decoded solution
     let key_int = base + i;
     let val_int = base + i + offset <= 90 ? base + i + offset : base + i + offset - 26;
-    // console.log(`${key_int} --> ${val_int}`);
-    // reference[key_int] = val_int;
     reference[String.fromCharCode(parseInt(key_int.toString(16), 16))] =
     String.fromCharCode(parseInt(val_int.toString(16), 16));
   }
@@ -27,8 +34,6 @@ const caesar = function(code, offset) {
     // set val_int - the decoded solution
     let key_int = base + i;
     let val_int = base + i + offset <= 122 ? base + i + offset : base + i + offset - 26;
-    // console.log(`${key_int} --> ${val_int}`);
-    // reference[key_int] = val_int;
     reference[String.fromCharCode(parseInt(key_int.toString(16), 16))] =
     String.fromCharCode(parseInt(val_int.toString(16), 16));
   }
@@ -44,36 +49,9 @@ const caesar = function(code, offset) {
     }
   }
 
-  console.log(translated);
+  return translated;
 
-
-
-
-  for(const key in reference) {
-    console.log(`${key} --> ${reference[key]}`);
-  }
-
-  // console.log(JSON.stringify(reference));
-  // console.log(reference['Y']);
-
-
-  // MADE IT THIS FAR. Now to apply to the secret code.
-
-
-
-
-
-  // // key is integer, value is hexadecimal
-  // for (var key in reference) {
-  //   console.log(String.fromCharCode(parseInt(reference[key])));
-  // }
-
-  // Splice alphabet to another code array based on offset
-  // Merge the two arrays into a key->val object
 };
 
 // Do not edit below this line
 module.exports = caesar;
-
-
-caesar('Hello, World!', 5);
