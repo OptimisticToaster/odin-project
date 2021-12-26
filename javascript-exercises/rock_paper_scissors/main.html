@@ -2,10 +2,29 @@
 <head>
     <meta charset="utf-8"/>
     <title>Rock-Paper-Scissors</title>
-    <script src="main.js"></script>
+    <style>
+        .choice_button img {
+            height: 200px;
+            width: auto;
+        }
+        #choices {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
 </head>
 <body>
     <h1>Rock-Paper-Scissors</h1>
-    <p>The game is in the console.</p>
+    <h2>Choose your play:</h2>
+    <div id="choices">
+        <button class="choice_button" id="paper" background-image="images/paper.png"><img src="images/paper.png"></button>
+        <button class="choice_button" id="rock"><img src="images/rock.png"></button>
+        <button class="choice_button" id="scissors"><img src="images/scissors.png"></button>
+    </div>
+    <div id="results">
+        <p id="winner"></p>
+        <p id="score"></p>
+    </div>
 </body>
 </html>
+<script src="main.js"></script>

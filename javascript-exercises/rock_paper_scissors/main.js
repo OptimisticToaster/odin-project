@@ -1,78 +1,98 @@
-console.log('Welcome to Rock-Paper-Scissors!')
+/**
+ * Run a game of Rock-Paper-Scissors
+ */
+class RockPaperScissors {
 
+    constructor() {
+        this.rounds = 0;
+        this.playerScore = 0;
+        this.playerSelectionID = null;
+        this.computerScore = 0;
+        this.computerSelectionID = null;
+        // use lowercase options ids, but user-interface converts to title case
+        this.OPTIONS = ['paper', 'rock', 'scissors'];
+        this.setupChoiceListeners();
+    }
 
-const OPTIONS = ['Paper', 'Rock', 'Scissors'];
+    /**
+     * Setup 'click' event listener on each choice button
+     */
+     setupChoiceListeners() {
+        const buttons = document.querySelectorAll('.choice_button');
+        // buttons.forEach(button => button.addEventListener('click', this.playRound));
+        buttons.forEach(button => {
+            button.addEventListener('click', event => {
+                this.playerSelectionID = this.OPTIONS.indexOf(button.id);
+                this.playRound();
+            });
 
+        });
+    }
 
-game();
+    /**
+     * Convert string to title case.
+     * 
+     * @param {String} string to convert
+     * @return {String} string after conversion
+     */
+    toTitleCase(str) {
+        return str.toLowerCase().split(' ').map(function (word) {
+            return (word.charAt(0).toUpperCase() + word.slice(1));
+        }).join(' ');
+    }
 
+    /**
+     * Have computer make selection.
+     * Since the system uses IDs internall, just choose random number 0-2.
+     */
+    computerPlay() {
+        this.computerSelectionID = Math.floor(Math.random()*3);
+    }
 
-// run the game for 5 rounds
-function game() {
-    let player_wins = 0;
-    let computer_wins = 0;
-    for (let ctr=0; ctr < 5; ctr++) {
-
-        // Get user selection
-        let playerSelection = toTitleCase(prompt("Please enter your choice."));
-        console.log(`playerSelection: %s`, playerSelection);
-
-        let playerSelectionID = OPTIONS.indexOf(playerSelection);
-        console.log(`playerSelectionID: %s`, playerSelectionID);
-
-
-        // Get computer selection
-        let computerSelection = computerPlay();
-        console.log(`computerSelection: %s`, computerSelection);
-
-        let computerSelectionID = OPTIONS.indexOf(computerSelection);
-        console.log(`computerSelectionID: %s`, computerSelectionID);
-
-
-        result = playRound(playerSelectionID, computerSelectionID);
-        if (result == 1) {
-            player_wins++;
+    /**
+     * Determine winner for a round
+     * Increment the appropriate score.
+     */
+    determineRoundWinner() {
+        // If values match, it's a tie
+        if (this.playerSelectionID == this.computerSelectionID) {
+            console.log(`Both players choose ${this.OPTIONS[this.playerSelectionID]}; it's a tie.`);
+            return 'tie';
         }
-        else if (result == -1) {
-            computer_wins++;
+        // Else If Player < Computer OR Player is Scissors and Computer is Paper, player wins
+        else if ( ( this.playerSelectionID < this.computerSelectionID ) || ( (this.playerSelectionID == 2) && ( this.computerSelectionID == 0) ) ) {
+            console.log(`Player wins! ${this.OPTIONS[this.playerSelectionID]} beats ${this.OPTIONS[this.computerSelectionID]}`);
+            this.playerScore++;
+            return 'player';
+        }
+        else {
+            console.log(`Computer wins! ${this.OPTIONS[this.computerSelectionID]} beats ${this.OPTIONS[this.playerSelectionID]}`);
+            this.computerScore++;
+            return 'computer';
         }
     }
-    console.log('GAME OVER! After 5 rounds...');
-    let ties = 5 - player_wins - computer_wins;
-    console.log(`Player won ${player_wins}, Computer won ${computer_wins}, and ${ties} tie rounds.`);
-}
+    
 
+    /**
+     * Play a round of the game.
+     */
+    playRound() {
+        this.rounds++;
+        console.log(`Starting round #${this.rounds}`);
+        console.log(`Player selected: ${this.OPTIONS[this.playerSelectionID]}`);
+        this.computerPlay();
+        console.log(`Computer selected: ${this.OPTIONS[this.computerSelectionID]}`);
 
+        // determine winner
+        let winner = this.determineRoundWinner();
 
-function toTitleCase(str) {
-    return str.toLowerCase().split(' ').map(function (word) {
-        return (word.charAt(0).toUpperCase() + word.slice(1));
-    }).join(' ');
-}
+        // show score
+        // console.log(`Score is: ${this.computerScore} Computer to ${this.playerScore} Player`);
+        document.getElementById('winner').innerText = this.toTitleCase(winner);
+        document.getElementById('score').innerHTML = `After ${this.rounds} rounds, the score is:<br>${this.computerScore} Computer to ${this.playerScore} Player`;
 
-
-function computerPlay() {
-    // Randomly return one of three OPTIONS:
-    let choice = OPTIONS[Math.floor(Math.random()*3)];
-    return choice;
-}
-
-
-// Provide the OPTIONS id to the round, not the string value
-// For each round, return 1 for player win, -1 for computer, and 0 if a tie
-function playRound(playerSelectionID, computerSelectionID) {
-    // If values match, it's a tie
-    if (playerSelectionID == computerSelectionID) {
-        console.log(`Both players choose ${OPTIONS[playerSelectionID]}; it's a tie.`);
-        return 0;
     }
-    // Else If Player < Computer OR Player is Scissors and Computer is Paper, player wins
-    else if ( ( playerSelectionID < computerSelectionID ) || ( (playerSelectionID == 2) && ( computerSelectionID == 0) ) ) {
-        console.log(`Player wins! ${OPTIONS[playerSelectionID]} beats ${OPTIONS[computerSelectionID]}`);
-        return 1;
-    }
-    else {
-        console.log(`Computer wins! ${OPTIONS[computerSelectionID]} beats ${OPTIONS[playerSelectionID]}`);
-        return -1;
-    }
+
 }
+
+let g = new RockPaperScissors();

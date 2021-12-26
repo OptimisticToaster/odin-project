@@ -1,0 +1,99 @@
+console.log('Welcome to Rock-Paper-Scissors!')
+
+
+const OPTIONS = ['Paper', 'Rock', 'Scissors'];
+
+
+const buttons = document.querySelectorAll('button');
+
+
+/** 
+  * Convert a string to proper/title case
+  * @return {String} str
+**/ 
+function toTitleCase(str) {
+    return str.toLowerCase().split(' ').map(function (word) {
+        return (word.charAt(0).toUpperCase() + word.slice(1));
+    }).join(' ');
+}
+
+/** 
+  * Add 'click' event listener to each button
+  * When clicked, play a round of the game, using clicked value as player choice
+  * @return {String} str
+**/ 
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        result = playRound(toTitleCase(button.id));
+    });
+});
+
+
+// game();
+
+
+// run the game for roundCount rounds
+function game(roundCount) {
+    let player_wins = 0;
+    let computer_wins = 0;
+    for (let ctr=0; ctr < roundCount; ctr++) {
+
+        // get user selection
+        let playerSelection = toTitleCase(prompt("Please enter your choice."));
+        console.log(`playerSelection: %s`, playerSelection);
+
+        // convert user selection to an ID value of OPTIONS
+        let playerSelectionID = OPTIONS.indexOf(playerSelection);
+        console.log(`playerSelectionID: %s`, playerSelectionID);
+
+
+        // get computer selection
+        let computerSelection = computerPlay();
+        console.log(`computerSelection: %s`, computerSelection);
+
+        // convert user selection to an ID value of OPTIONS
+        let computerSelectionID = OPTIONS.indexOf(computerSelection);
+        console.log(`computerSelectionID: %s`, computerSelectionID);
+
+
+    }
+    console.log('GAME OVER! After 5 rounds...');
+    let ties = 5 - player_wins - computer_wins;
+    console.log(`Player won ${player_wins}, Computer won ${computer_wins}, and ${ties} tie rounds.`);
+}
+
+
+function computerPlay() {
+    // return random value 0-2, representing one of three OPTIONS:
+    let choice = Math.floor(Math.random()*3);
+    return choice;
+}
+
+
+// Provide the OPTIONS id to the round, not the string value
+// For each round, return 1 for player win, -1 for computer, and 0 if a tie
+function playRound(playerChoice) {
+    let playerSelectionID = OPTIONS.indexOf(playerChoice);
+    console.log(playerSelectionID);
+    let computerSelectionID = computerPlay();
+    console.log(computerSelectionID);
+
+
+    // If values match, it's a tie
+    if (playerSelectionID == computerSelectionID) {
+        document.getElementById('p_results').innerText = 'It\'s a tie.';
+        console.log(`Both players choose ${OPTIONS[playerSelectionID]}; It's a tie.`);
+        return 0;
+    }
+    // Else If Player < Computer OR Player is Scissors and Computer is Paper, player wins
+    else if ( ( playerSelectionID < computerSelectionID ) || ( (playerSelectionID == 2) && ( computerSelectionID == 0) ) ) {
+        document.getElementById('p_results').innerText = 'Player Wins';
+        console.log(`Player wins! ${OPTIONS[playerSelectionID]} beats ${OPTIONS[computerSelectionID]}`);
+        return 1;
+    }
+    else {
+        document.getElementById('p_results').innerText = 'Computer Wins';
+        console.log(`Computer wins! ${OPTIONS[computerSelectionID]} beats ${OPTIONS[playerSelectionID]}`);
+        return -1;
+    }
+}
